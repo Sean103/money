@@ -12,12 +12,12 @@ import Types from '@/components/Money/Types.vue';
 
 <script lang="ts">
     import Vue from 'vue';
-    import { Component} from 'vue-property-decorator';
+    import { Component,  Prop} from 'vue-property-decorator';
 
     @Component
 
     export default class Types extends Vue {
-
+        @Prop() readonly value!: string;
 
 
          type = '-'; // '-'表示支出，‘+’表示收入;
@@ -34,9 +34,10 @@ import Types from '@/components/Money/Types.vue';
               }
 
                this.type = type;
+               this.$emit('update:value', type);
 
         }
-
+    
     }
 
     // export default {
