@@ -1,8 +1,7 @@
-import { shallowMount } from '@vue/test-utils';
+
 <template>
-    
-    <div class="nav-wrapper">
-        <div class="content">
+    <div class="layout-wrapper" :class="classPrefix && `${classPrefix}-wrapper`">
+        <div class="content" :class="classPrefix && `${classPrefix}-content`   ">
             <slot></slot>
         </div>
         
@@ -11,22 +10,23 @@ import { shallowMount } from '@vue/test-utils';
     
 </template>
 
+
+
 <script>
     export default {
-        name: 'Layout'
+        name: 'Layout',
+        props: ['classPrefix'],
     }
 </script>
 
 <style lang="scss" scoped>
-      .nav-wrapper {
-        // border: 1px solid green;
+     .layout-wrapper {
         display: flex;
         flex-direction: column;
         height: 100vh;
     }
-    .content {
-        flex-grow: 1;
-        overflow: auto;
-        // border: 1px solid blue;
-    }
+  .content {
+    overflow: auto;
+    flex-grow: 1;
+  }
 </style>
