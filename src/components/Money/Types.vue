@@ -12,7 +12,7 @@ import Types from '@/components/Money/Types.vue';
 
 <script lang="ts">
     import Vue from 'vue';
-    import { Component, Prop} from 'vue-property-decorator';
+    import { Component} from 'vue-property-decorator';
 
     @Component
 
