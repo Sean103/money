@@ -2,13 +2,14 @@ import Icon from '@/components/Icon.vue';
 <template>
     <div>
         <Layout>
-          <ol class="tags">
-              <li v-for="tag in tags" :key="tag.id">
+          <div class="tags">
+              <router-link class="tag"
+                    v-for="tag in tags" :key="tag.id"
+                    :to="`/labels/edit/${tag.id}`">
                 <span>{{tag.name}}</span>
                 <Icon name="right"></Icon>
-              </li>
-             
-          </ol> 
+              </router-link>
+          </div> 
           <div class="createTag-wrapper">
               <button class="createTag" @click="createTag()">新建标签</button>
           </div>
@@ -34,7 +35,7 @@ import Icon from '@/components/Icon.vue';
         tags = tagListModel.data;
 
       createTag() {
-        const name = window.prompt('请输出标签名');
+        const name = window.prompt('请输入标签名');
         if (name) {
             const message = tagListModel.create(name);
             if (message === 'duplicated') {
@@ -54,7 +55,7 @@ import Icon from '@/components/Icon.vue';
      background: white;
      font-size: 16px;
      padding-left: 16px;
-     > li{
+     > .tag{
          min-height: 44px;
          display: flex;
          align-items: center;
@@ -67,10 +68,10 @@ import Icon from '@/components/Icon.vue';
              color: #666;
              margin-right: 16px;
         
-         }
-     }
- }
- .createTag {
+            }
+        }
+    }
+    .createTag {
      background: #767676;
      color: white;
      border-radius: 4px;
@@ -81,8 +82,8 @@ import Icon from '@/components/Icon.vue';
          text-align: center;
          padding: 16px;
          margin-top: 44-16px;
-     }
- }
+        }
+    }
 
 
 
