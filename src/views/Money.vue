@@ -7,11 +7,16 @@
         <Tabs :data-source="recordTypeList"
           :value.sync="record.type"/>
 
-        <Notes 
+        <div class="notes">
+            <Notes 
               fieldName="备注"
               placeholder="在这里输入备注"
+              :value="record.notes"
               @update:value="onUpdateNotes"></Notes>
-        <Tags></Tags>
+        </div>
+     
+
+        <Tags @update:value="record.tags = $event"></Tags>
     
    
     </Layout>        
@@ -60,20 +65,29 @@
         }
 
         saveRecord(){
-           this.$store.commit('createRecord', this.record);
+            if(!this.record.tags || this.record.tags.length === 0) {
+                return window.alert('请至少选择一个标签')
+            }
+            this.$store.commit('createRecord', this.record);
+            if(this.$store.state.createRecordError === null) {
+               window.alert('已保存');
+           }
         }
        
         
         
     }
 </script>
-<style lang="scss">
-    .layout-content {
+<style lang="scss" scoped>
+    ::v-deep .layout-content {
         
         display: flex;
         flex-direction: column-reverse;
 
 
+    }
+    .notes {
+        padding: 12px 0;
     }
 
 </style>
