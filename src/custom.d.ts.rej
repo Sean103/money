@@ -1,0 +1,4 @@
+diff a/src/custom.d.ts b/src/custom.d.ts	(rejected hunks)
+@@ -26 +26 @@ interface Window {
+-    tagList: Tag[]
++    tagList: Tag[];
