@@ -7,6 +7,7 @@
  </div>
 </template>
 
+
 <style lang="scss">
 @import "~@/assets/style/reset.scss";
 @import "~@/assets/style/helper.scss";
@@ -18,6 +19,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #333;
   font-size: 16px;
+  background: #F5F5F5;
 }
 
 
